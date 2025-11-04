@@ -11,36 +11,3 @@ app.get ('/', (req, res)=> {
 
 
 
-app.listen (port,() => {
-    console.log(`Server is Running on port ${port}`);
-});
-
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'gyan1234',
-    database: 'hollywood',
-    port:  '3307'
-});
-
-db.connect((err)=> {
-    if (err){
-        console.error('Error Connecting to MYSQL:' + err.stack);
-        return;
-    }
-    console.log('Connection Succesfully');
-});
-
-
-app.get('/api/film', (req, res) => {
-    db.query('SELECT * FROM film', (err, results) => {
-        if (err) {
-            console.error('Error executing query: ' + err.stack) 
-            res.status(500).send('Error fetching data');
-            return;
-    }
-    res.json(results);
-    });
-});
-
-

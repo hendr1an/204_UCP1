@@ -15,3 +15,11 @@ app.listen (port,() => {
     console.log(`Server is Running on port ${port}`);
 });
 
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'gyan1234',
+    database: 'hollywood',
+    port:  '3307'
+});
+

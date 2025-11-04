@@ -32,3 +32,15 @@ db.connect((err)=> {
 });
 
 
+app.get('/api/film', (req, res) => {
+    db.query('SELECT * FROM film', (err, results) => {
+        if (err) {
+            console.error('Error executing query: ' + err.stack) 
+            res.status(500).send('Error fetching data');
+            return;
+    }
+    res.json(results);
+    });
+});
+
+
